@@ -2,6 +2,7 @@ public class BranchEmployee extends CompanyPersonal{
 
     private Branch branch;
 
+
     public BranchEmployee(String id, String name, String surname, String password, String email, Branch branch ){
         this.name = name;
         this.surname = surname;
@@ -10,6 +11,9 @@ public class BranchEmployee extends CompanyPersonal{
         this.branch = branch;
         AutoAssignId();//to create and assign id
     }
+
+
+
 
     public void  showStock(){
         branch.getStock();

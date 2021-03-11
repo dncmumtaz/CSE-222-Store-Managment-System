@@ -4,6 +4,7 @@ public class Branch {
 
     private  String name;
     private BranchEmployee[] branchEmployees;
+    private int branchEmployeeNumber;
     private Customer[] customers;
 
 
@@ -16,7 +17,16 @@ public class Branch {
         this.branchEmployees = new BranchEmployee[20];
         this.customers = new Customer[20];
         this.stock = new Product[20];
+        this.branchEmployeeNumber = 0;
         this.stockIndex = 0;
+    }
+
+    public int getBranchEmployeeNumber() {
+        return branchEmployeeNumber;
+    }
+
+    public void setBranchEmployeeNumber(int branchEmployeeNumber) {
+        this.branchEmployeeNumber = branchEmployeeNumber;
     }
 
     public String getName() {
@@ -53,6 +63,10 @@ public class Branch {
 
     public void setStockIndex(int stockIndex) {
         this.stockIndex = stockIndex;
+    }
+
+    public void addBranchEmployee(BranchEmployee branchEmployee){
+        branchEmployees[branchEmployeeNumber] = branchEmployee;
     }
 
 }

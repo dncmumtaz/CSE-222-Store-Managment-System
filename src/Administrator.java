@@ -24,8 +24,9 @@ public class Administrator extends  CompanyPersonal{
         company.removeBranch(index);
     }
 
-    public void addBranchEmployee(int branchIndex, int branchEmployeeIndex, BranchEmployee branchEmployee){
-        company.getBranches()[branchIndex].getBranchEmployees()[branchEmployeeIndex] = branchEmployee;
+    public void addBranchEmployee(int branchIndex, BranchEmployee branchEmployee){
+
+        company.getBranches()[branchIndex].addBranchEmployee(branchEmployee);
     }
 
     public void removeBranchEmployee(int branchIndex, int branchEmployeeIndex, BranchEmployee branchEmployee){

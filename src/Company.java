@@ -65,7 +65,13 @@ public class Company {
     public void LoginScreen(){}
     public void Test()
     {
-        administrators[0].addBranch(new Branch("PolatliBranch"));
+
+        administrators[0].addBranch(new Branch("FirstBranch"));
+        administrators[0].addBranch(new Branch("SecondBranch"));
+        administrators[0].addBranch(new Branch("ThirdBranch"));
+        administrators[0].addBranch(new Branch("FourdBranch"));
+        //administrators[0].addBranchEmployee(new BranchEmployee());
+        administrators[0].addBranchEmployee(0, new BranchEmployee("101","1stEmployeeName","1stEmployeeSurname","emp111", "emp11@xx.com", getBranches()[0]));
 
     }
 
