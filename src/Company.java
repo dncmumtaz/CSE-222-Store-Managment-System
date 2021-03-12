@@ -42,6 +42,10 @@ public class Company {
         this.branches = branches;
     }
 
+    public int getBranchNumber() {
+        return branchNumber;
+    }
+
     public void addBranch(Branch branch ){
         branches[branchNumber] = branch;
         branchNumber++;
@@ -71,8 +75,14 @@ public class Company {
         administrators[0].addBranch(new Branch("ThirdBranch"));
         administrators[0].addBranch(new Branch("FourdBranch"));
         //administrators[0].addBranchEmployee(new BranchEmployee());
-        administrators[0].addBranchEmployee(0, new BranchEmployee("101","1stEmployeeName","1stEmployeeSurname","emp111", "emp11@xx.com", getBranches()[0]));
+        administrators[0].addBranchEmployee(0, new BranchEmployee("101","1stEmployeeName","1stEmployeeSurname","emp111", "emp111@xx.com", getBranches()[0]));
+        administrators[0].addBranchEmployee(0, new BranchEmployee("102","2ndEmployeeName","2ndEmployeeSurname","emp112", "emp112@xx.com", getBranches()[0]));
+        administrators[0].addBranchEmployee(0, new BranchEmployee("103","3rdEmployeeName","3rdEmployeeSurname","emp113", "emp113@xx.com", getBranches()[0]));
+        branches[0].getBranchEmployees()[0].addProduct(new MeetingDesk("MDesk1","red", 3) );
+        branches[0].getBranchEmployees()[0].addProduct(new MeetingTable("MTable1","purple", 3) );
+        branches[0].getBranchEmployees()[0].removeProduct(1);
 
+        branches[0].getBranchEmployees()[0].addCustomer(new Customer("C111", "C1Name", "C1Surname", "C1Password", "xx"));
     }
 
 }

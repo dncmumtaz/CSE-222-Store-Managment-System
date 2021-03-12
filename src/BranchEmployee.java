@@ -16,23 +16,41 @@ public class BranchEmployee extends CompanyPersonal{
 
 
     public void  showStock(){
-        branch.getStock();
+        for(int i = 0; i < branch.getBranchEmployeeNumber()-1; i++)
+        {
+            System.out.println(branch.getStock()[i].getModel()+ " "+ branch.getStock()[i].getColor()+ " " + branch.getStock()[i].getNumberOfItem());
+        }
+
+
     }
+
     public void sendInfoToAdmin(Product product){
         System.out.println("This product should be buy.");
     }
 
     public void addProduct(Product product){
-        branch.setStockIndex(branch.getStockIndex() + 1);
+
         branch.getStock()[branch.getStockIndex()] = product;
+        branch.setStockIndex(branch.getStockIndex() + 1);
+
     }
 
     public  void removeProduct(int index){
-        branch.getStock()[index] = null;
+      //   Branch tempBranch = new Branch("temp");
+      //   tempBranch = branch;
+
+        for(int i = index; i < branch.getStockIndex()-1; i++ )
+        {
+            branch.getStock()[i] = branch.getStock()[i+1];
+        }
+        branch.getStock()[branch.getStockIndex()] = null;
+
+     //   branch.getStock()[index] = null;
+        branch.setStockIndex(branch.getStockIndex() -1 );
     }
 
     public void showCustomerInfo(int customerIndex){
-        //indexe gore degil musteri numarasına gore gelmesi gerekir
+        //TODO indexe gore degil musteri numarasına gore gelmesi gerekir
         System.out.println(branch.getCustomers()[customerIndex].getName());
         System.out.println(branch.getCustomers()[customerIndex].getSurname());
         System.out.println(branch.getCustomers()[customerIndex].getEmail());
@@ -54,12 +72,24 @@ public class BranchEmployee extends CompanyPersonal{
     }
 
     public void addCustomer(Customer customer){
-        //to-do last index
-        int lastIndex = 0;
+        int lastIndex = branch.getNumberOfCustomer();
         branch.getCustomers()[lastIndex] = customer;
+        branch.setNumberOfCustomer(lastIndex + 1);
     }
 
-    //To-DO menu scene
+    public void makeSales(String productModel){
+
+        for(int i = 0; i < branch.getStockIndex() ; i++)
+        {
+
+            if(branch.getStock()[i].getModel().equals(productModel) ){
+                branch.getStock()[i].setNumberOfItem(branch.getStock()[i].getNumberOfItem()- 1);
+                break;
+            }
+        }
+    }
+
+    //ToDo menu scene
 
 }
 /*
