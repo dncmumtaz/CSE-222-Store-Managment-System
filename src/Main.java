@@ -19,5 +19,7 @@ public class Main {
         company.getBranches()[0].getCustomers()[0].searchProduct( company, 0,"MTable1" );
         company.getBranches()[0].getCustomers()[0].showProductList(company, 0);
         company.getBranches()[0].getCustomers()[0].ShowProductStockBranch(company, "MDesk1");
+        System.out.println("--------");
+        company.getBranches()[0].getCustomers()[0].ShowOrders();
     }
 }

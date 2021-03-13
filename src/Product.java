@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public abstract class Product {
-    protected Product() {
-    }
+ //   protected Product() {
+ //   }
 
 
     String model;

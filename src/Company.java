@@ -83,6 +83,9 @@ public class Company {
         branches[0].getBranchEmployees()[0].removeProduct(1);
 
         branches[0].getBranchEmployees()[0].addCustomer(new Customer("C111", "C1Name", "C1Surname", "C1Password", "xx"));
+        branches[0].getCustomers()[0].OnlineShoping(new OfficeChair("OChair1","red",1) );
+        branches[0].getCustomers()[0].OnlineShoping(new OfficeChair("OChair2","red",1) );
+
     }
 
 }

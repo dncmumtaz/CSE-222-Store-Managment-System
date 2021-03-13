@@ -72,6 +72,9 @@ public class Customer extends Person{
 
     public void ShowOrders(){
         //show orders
+        for(int i = 0; i < orderNumber; i++){
+            System.out.println(orders[i]);
+        }
     }
 
 
@@ -85,8 +88,7 @@ public class Customer extends Person{
             if(numOfStock == 0) continue;
             for(int j = 0 ; j < numOfStock +1 ; j++) {
                 if (company.getBranches()[i].getStock()[j].getModel().equals(nameOfProduct)) {
-                    System.out.println("meyabaaaa");
-                    System.out.println("the product is available in " + company.getBranches()[i].getName());
+                   System.out.println("the product is available in " + company.getBranches()[i].getName());
                 }
             }
         }
@@ -100,7 +102,7 @@ public class Customer extends Person{
         this.telephone = telephone;
     }
 
-    public void OnlineShoping(){
+    public void OnlineShoping(Product product){
 //        Scanner input = new Scanner(System.in);
  //       address = input.nextLine();
         System.out.println("enter adress ");
@@ -109,11 +111,17 @@ public class Customer extends Person{
    //     telephone = input.nextLine();
         //take telephone and set telephone
 
-
+        orders[orderNumber] = product.getModel().toString();
+        orderNumber++;
         //make online shoping so call the addoder
     }
 
-    public void  makeShoping(){}
+    public void  makeShoping(Product product){
+        //todo update orderlist
+        orders[orderNumber] = product.getModel().toString();
+        orderNumber++;
+        //sube elemani stocku güncellemeli
+    }
 
 
     //Müşteri sisteme giriş yaptığında ürün arayabilir,
