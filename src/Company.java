@@ -54,7 +54,18 @@ public class Company {
         branchNumber++;
     }
     public void removeBranch(int num ){
+
         branches[num]  = null;
+        int i = num +1 ;
+        for ( i = num; i < branchNumber; i++){
+            if(i == branchNumber-1){
+                branches[i] = null;
+                break;
+            }
+            branches[i] = branches[i+1];
+        }
+        branchNumber--;
+
     }
 
     public void addAdministrator(Administrator administrator){

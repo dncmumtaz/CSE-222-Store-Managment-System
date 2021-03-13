@@ -4,7 +4,7 @@ public class Main {
         // write your code here
         Company company = new Company("LCW");
 
-        company.addAdministrator(new Administrator("1111", "admin1", "admin1surname", "1234", "admin@lcw.com.tr", company));
+        company.addAdministrator(new Administrator("1", "admin1", "admin1surname", "1", "admin@lcw.com.tr", company));
 
 
         company.Test();

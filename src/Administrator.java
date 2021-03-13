@@ -29,18 +29,111 @@ public class Administrator extends  CompanyPersonal{
         company.getBranches()[branchIndex].addBranchEmployee(branchEmployee);
     }
 
-    public void removeBranchEmployee(int branchIndex, int branchEmployeeIndex, BranchEmployee branchEmployee){
+    public void removeBranchEmployee(int branchIndex, int branchEmployeeIndex){
         company.getBranches()[branchIndex].getBranchEmployees()[branchEmployeeIndex] = null;
+        company.getBranches()[branchIndex].setBranchEmployeeNumber(company.getBranches()[branchIndex].getBranchEmployeeNumber() - 1);
     }
 
 
 
     @Override
-    public void menu(){
+    public void menu() {
         Scanner input = new Scanner(System.in);
         int options;
         boolean exit = false;
-        while (!exit){}
-    }
+        while (!exit) {
+            System.out.println("Admin Panel");
+            System.out.println("(1) Branch Operations");
+            System.out.println("(2) Branch Employee Operations");
+            System.out.println("(0) Exit from this menu");
+            System.out.println("Options: ");
+            options = input.nextInt();
+            switch (options) {
+                case 1:
+                    System.out.println("(1) Add Branch");
+                    System.out.println("(2) Remove Branch");
+                    System.out.println("(0) Exit");
+                    System.out.print("Choice: ");
+                    options = input.nextInt();
 
+                    if (options == 1) {
+                        System.out.print("Please enter a name for the branch: ");
+                        input.nextLine();
+                        String name_branch = input.nextLine();
+                        addBranch(new Branch(name_branch));
+                    }
+                    else if (options == 2 && company.getBranchNumber() > 0) {
+                        System.out.println("Please choose a branch: \n");
+                        for (int i = 0; i < company.getBranchNumber(); i++) {
+                            System.out.println((i + 1) + ") " + company.getBranches()[i].getName());
+                        }
+                        System.out.println("0) Cancel");
+                        System.out.print("Index: ");
+                        int index = input.nextInt();
+                        if (index <= company.getBranchNumber() && index > 0) {
+                            removeBranch((index - 1));
+                        }
+                    }
+                    else if (options == 2 && company.getBranchNumber() <= 0) {
+                        System.out.println("There is no branch !\n");
+                    }
+                    break;
+                case 2:
+                    if (company.getBranchNumber() > 0) {
+                        System.out.println("Please choose a branch: ");
+                        for (int i = 0; i < company.getBranchNumber(); i++) {
+                            System.out.println((i + 1) + ") " + company.getBranches()[i].getName());
+                        }
+                        System.out.println("0) Cancel");
+                        System.out.print("Index: ");
+                        int index = input.nextInt();
+                        if (index > 0 && index <= company.getBranchNumber()) {
+
+                            System.out.println("(1) Add Employee");
+                            System.out.println("(2) Remove Employee");
+                            System.out.println("(0) Exit");
+                            System.out.print("Choice: ");
+                            options = input.nextInt();
+                            if (options == 1) {
+                                System.out.print("ID of employee: ");
+                                String id_employee = input.next();
+                                System.out.print("Name of employee: ");
+                                String name_employee = input.nextLine();
+                                System.out.print("Surname of employee: ");
+                                String surname_employee = input.nextLine();
+                                System.out.print("Password of employee: ");
+                                String password_employee = input.next();
+                                System.out.print("email of employee: ");
+                                String email_employee = input.next();
+                                addBranchEmployee((index - 1), new BranchEmployee(id_employee, name_employee, surname_employee, password_employee, email_employee, company.getBranches()[index - 1]));
+                            } else if (options == 2 && company.getBranches()[index - 1].getBranchEmployeeNumber() > 0) { //????
+                                System.out.println("Please choose a employee: \n");
+                                for (int i = 0; i < company.getBranches()[index - 1].getBranchEmployeeNumber(); i++) {
+                                    System.out.println((i + 1) + ") " + company.getBranches()[index - 1].getBranchEmployees()[i].getName());
+                                }
+                                System.out.println("0) Cancel");
+                                System.out.print("Index: ");
+                                int index_employee = input.nextInt();
+                                if (index_employee > 0 && index_employee <= company.getBranches()[index - 1].getBranchEmployeeNumber()) {
+                                    removeBranchEmployee((index - 1), index_employee);
+                                }
+                            } else {
+                                System.out.println("There is no employee !\n");
+                            }
+                        } else {
+                            System.out.println("Please Try Again\n");
+                        }
+                    } else {
+                        System.out.println("There is no branch !\n");
+                    }
+                    break;
+                case 0:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Please Try Again\n");
+
+            }
+        }
+    }
 }
