@@ -4,6 +4,7 @@ public class BranchEmployee extends CompanyPersonal{
 
 
     public BranchEmployee(String id, String name, String surname, String password, String email, Branch branch ){
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;

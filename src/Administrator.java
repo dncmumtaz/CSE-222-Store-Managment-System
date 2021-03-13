@@ -4,7 +4,7 @@ public class Administrator extends  CompanyPersonal{
     private Company company;
 
     public Administrator(String id, String name, String surname, String password, String email, Company company ){
-
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -33,6 +33,14 @@ public class Administrator extends  CompanyPersonal{
         company.getBranches()[branchIndex].getBranchEmployees()[branchEmployeeIndex] = null;
     }
 
-    public void removeBranchEmployee(){}
+
+
+    @Override
+    public void menu(){
+        Scanner input = new Scanner(System.in);
+        int options;
+        boolean exit = false;
+        while (!exit){}
+    }
 
 }

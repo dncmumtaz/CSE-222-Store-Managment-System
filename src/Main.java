@@ -21,5 +21,11 @@ public class Main {
         company.getBranches()[0].getCustomers()[0].ShowProductStockBranch(company, "MDesk1");
         System.out.println("--------");
         company.getBranches()[0].getCustomers()[0].ShowOrders();
+
+
+        company.startTheSystem();
+
     }
+
+
 }
