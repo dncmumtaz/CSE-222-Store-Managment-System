@@ -30,8 +30,21 @@ public class Administrator extends  CompanyPersonal{
     }
 
     public void removeBranchEmployee(int branchIndex, int branchEmployeeIndex){
-        company.getBranches()[branchIndex].getBranchEmployees()[branchEmployeeIndex] = null;
-        company.getBranches()[branchIndex].setBranchEmployeeNumber(company.getBranches()[branchIndex].getBranchEmployeeNumber() - 1);
+
+       // company.getBranches()[branchIndex].getBranchEmployees()[branchEmployeeIndex] = null;
+
+
+        for(int i = branchEmployeeIndex-1; i <= company.getBranches()[branchIndex].getBranchEmployeeNumber(); i++ ){
+            if( i == company.getBranches()[branchIndex].getBranchEmployeeNumber() ){
+                company.getBranches()[branchIndex].getBranchEmployees()[i] = null;
+                break;
+            }
+            company.getBranches()[branchIndex].getBranchEmployees()[i] = company.getBranches()[branchIndex].getBranchEmployees()[i+ 1];
+        }
+        company.getBranches()[branchIndex].setBranchEmployeeNumber(company.getBranches()[branchIndex].getBranchEmployeeNumber()-1);
+
+
+
     }
 
 
@@ -98,6 +111,7 @@ public class Administrator extends  CompanyPersonal{
                                 System.out.print("ID of employee: ");
                                 String id_employee = input.next();
                                 System.out.print("Name of employee: ");
+                                input.nextLine();
                                 String name_employee = input.nextLine();
                                 System.out.print("Surname of employee: ");
                                 String surname_employee = input.nextLine();
@@ -105,25 +119,33 @@ public class Administrator extends  CompanyPersonal{
                                 String password_employee = input.next();
                                 System.out.print("email of employee: ");
                                 String email_employee = input.next();
-                                addBranchEmployee((index - 1), new BranchEmployee(id_employee, name_employee, surname_employee, password_employee, email_employee, company.getBranches()[index - 1]));
-                            } else if (options == 2 && company.getBranches()[index - 1].getBranchEmployeeNumber() > 0) { //????
+                                addBranchEmployee(index -1 , new BranchEmployee(id_employee, name_employee, surname_employee, password_employee, email_employee, company.getBranches()[index - 1]));
+                            }
+                            else if (options == 2 && company.getBranches()[index - 1].getBranchEmployeeNumber() > 0) { //????
                                 System.out.println("Please choose a employee: \n");
-                                for (int i = 0; i < company.getBranches()[index - 1].getBranchEmployeeNumber(); i++) {
+                                for (int i = 0; i < company.getBranches()[index - 1].getBranchEmployeeNumber(); i++)
+                                {
                                     System.out.println((i + 1) + ") " + company.getBranches()[index - 1].getBranchEmployees()[i].getName());
                                 }
                                 System.out.println("0) Cancel");
                                 System.out.print("Index: ");
                                 int index_employee = input.nextInt();
-                                if (index_employee > 0 && index_employee <= company.getBranches()[index - 1].getBranchEmployeeNumber()) {
+                                if (index_employee > 0 && index_employee <= company.getBranches()[index - 1].getBranchEmployeeNumber())
+                                {
                                     removeBranchEmployee((index - 1), index_employee);
                                 }
-                            } else {
+                            }
+                            else
+                            {
                                 System.out.println("There is no employee !\n");
                             }
-                        } else {
+                        }
+                        else
+                        {
                             System.out.println("Please Try Again\n");
                         }
-                    } else {
+                    }
+                    else {
                         System.out.println("There is no branch !\n");
                     }
                     break;

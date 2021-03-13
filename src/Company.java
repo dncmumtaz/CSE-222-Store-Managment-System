@@ -55,7 +55,7 @@ public class Company {
     }
     public void removeBranch(int num ){
 
-        branches[num]  = null;
+     //   branches[num]  = null;
         int i = num +1 ;
         for ( i = num; i < branchNumber; i++){
             if(i == branchNumber-1){
