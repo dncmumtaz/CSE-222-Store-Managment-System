@@ -74,11 +74,15 @@ public class Company {
         this.adminNumber++;
     }
 
-
-
-
-    public  void start(){
-
+    public void chechProductInBranchs(String model){
+        //System.out.println("jem ici");
+        for (int i = 0; i < branchNumber; i++){
+            //System.out.println("jem isi");
+            for(int j = 0; j < branches[i].getStockIndex(); j++)
+                if(model.equals(branches[i].getStock()[j].getModel())){
+                    System.out.println(model + " is availible in" + branches[i].getName());
+                }
+        }
     }
     public void LoginScreen(){}
 

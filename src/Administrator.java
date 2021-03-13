@@ -43,8 +43,6 @@ public class Administrator extends  CompanyPersonal{
         }
         company.getBranches()[branchIndex].setBranchEmployeeNumber(company.getBranches()[branchIndex].getBranchEmployeeNumber()-1);
 
-
-
     }
 
 
@@ -58,6 +56,10 @@ public class Administrator extends  CompanyPersonal{
             System.out.println("Admin Panel");
             System.out.println("(1) Branch Operations");
             System.out.println("(2) Branch Employee Operations");
+            System.out.println("(3) Check Stock");
+            System.out.println("(4) Show product list");
+
+ //          System.out.println("(5) Check product in branch ");
             System.out.println("(0) Exit from this menu");
             System.out.println("Options: ");
             options = input.nextInt();
@@ -149,6 +151,34 @@ public class Administrator extends  CompanyPersonal{
                         System.out.println("There is no branch !\n");
                     }
                     break;
+                case 3:
+                    System.out.println("Please choose a branch: \n");
+                    for (int i = 0; i < company.getBranchNumber(); i++) {
+                        System.out.println((i + 1) + ") " + company.getBranches()[i].getName());
+                    }
+                    System.out.println("0) Cancel");
+                    System.out.print("Index: ");
+                    int index2 = input.nextInt();
+                    company.getBranches()[index2-1].chechStock();
+                    break;
+                case 4:
+                    System.out.println("Please choose a branch: \n");
+                    for (int i = 0; i < company.getBranchNumber(); i++) {
+                        System.out.println((i + 1) + ") " + company.getBranches()[i].getName());
+                    }
+                    System.out.println("0) Cancel");
+                    System.out.print("Index: ");
+                    int index1 = input.nextInt();
+                    company.getBranches()[index1-1].showProductList();
+                    break;
+/*                case 5:
+                    System.out.println("enter name of model that you want search");
+                    System.out.print("name: ");
+                    input.nextLine();
+                    String name_model= input.nextLine();
+                    company.chechProductInBranchs(name_model);
+
+                    break;*/
                 case 0:
                     exit = true;
                     break;

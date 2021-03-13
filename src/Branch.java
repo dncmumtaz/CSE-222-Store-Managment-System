@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class Branch {
 
@@ -74,11 +74,44 @@ public class Branch {
         this.stockIndex = stockIndex;
     }
 
+    public void  showProductList(){
+        for(int i = 0 ; i < stockIndex+1; i++) {
+            System.out.println(stock[i].getModel() + " : " + stock[i].getNumberOfItem());
+        }
+    }
+
+
+
     public void addBranchEmployee(BranchEmployee branchEmployee){
         branchEmployees[branchEmployeeNumber] = branchEmployee;
         branchEmployeeNumber++;
     }
 
+    public  void chechStock(){
+        boolean bool = false;
+        for(int i = 0 ; i < stockIndex; i++){
+            System.out.println(stock[i].getModel() + " : " + stock[i].getNumberOfItem());
+            if(stock[i].numberOfItem <= 3){
+                bool = true;
+                System.out.println("there is only "+ stock[i].numberOfItem + " " + stock[i].getModel() + " model product");
+                System.out.println("You should buy from this product: "+ stock[i].getModel() );
+                Scanner input = new Scanner(System.in);
+                int choice;
+                while (true){
+                    System.out.println("1) add product stock for this procuct ");
+                    System.out.println("0) exit");
+                    choice = input.nextInt();
+                    if(choice == 1){
+                        stock[i].setNumberOfItem(stock[i].getNumberOfItem() + 1);
+                        System.out.println("you have "+  stock[i].getNumberOfItem()+ " " + stock[i].getModel() + " product" );
+                    }
+                    else if(choice == 0)
+                        break;
+                }
 
+            }
+        }
+        if(bool == false) System.out.println( "In your stock, there is no missing  product");
+    }
 
 }

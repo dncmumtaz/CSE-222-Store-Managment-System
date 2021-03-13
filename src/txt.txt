@@ -5,11 +5,12 @@
      renkler), kitaplıklar (12 model) ve ofis dolapları (12 model).
    * Otomasyon sistemi yöneticiler, şube çalışanları ve müşteriler gibi kullanıcılara sahiptir.
 
-Yöneticiler, şubeleri ve şube çalışanlarını ekleyip kaldırarak sistemi yönetir.
-  * Ayrıca tedarik edilmesi gereken herhangi bir ürün olup olmadığını da  sorgulayabilirler.
-  * Sistemde her müşteri için özel bir müşteri numarası tanımlanır.
-  * Bir kişi sisteme üye  olduğunda adını, soyadını ve e-posta adresini kullanır ve şifre tanımlar.
-  * Kayıt işlemi tamamlandığında  müşteri numarası sisteme otomatik olarak tanımlanır vekullanıcı bu konuda bilgilendirilir.
+Yöneticiler, şubeleri ve şube çalışanlarını ekleyip kaldırarak sistemi yönetir.ok
+  * Ayrıca tedarik edilmesi gereken herhangi bir ürün olup olmadığını da  sorgulayabilirler.ok
+  *When a person subscribes to the system, he/she
+   uses his/her name, surname and e-mail address, and defines a password. When the
+   registration is completed, the customer number is automatically defined in the system and
+   the user is informed about it.
 
 Müşteri sisteme giriş yaptığında ürün arayabilir,
   *ürün listesini görebilir,
