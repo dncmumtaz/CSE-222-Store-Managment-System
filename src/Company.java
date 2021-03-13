@@ -105,7 +105,7 @@ public class Company {
             if(choice == 1){
                 PersonalLogin();
             }else if(choice == 2){
-                //cargoInquiry();
+                custemerLogin();
             }else if(choice == 0){
                 System.out.println("System is shutting down..");
             }else{
@@ -128,8 +128,8 @@ public class Company {
 
 
             for (int i = 0; i < adminNumber ; i++) {
-                System.out.println("meyabaaaa");
-                System.out.println(getAdministrators()[i].getId()+ "*****" + getAdministrators()[i].getPassword());
+
+              //  System.out.println(getAdministrators()[i].getId()+ "*****" + getAdministrators()[i].getPassword());
                 if (personID.equals(getAdministrators()[i].getId())  &&
                         personPassword.equals(getAdministrators()[i].getPassword())  ){
                     System.out.println("Access Granted\n");
@@ -139,26 +139,112 @@ public class Company {
                     break;
                 }
             }
+            if (!permisson){
+                for (Branch branch : branches) {
+                    if(branch == null) continue;
+                    for (int j = 0; j < branch.getBranchEmployeeNumber(); j++) {
+                        if (personID.compareTo(branch.getBranchEmployees()[j].getId()) == 0 &&
+                                personPassword.compareTo(branch.getBranchEmployees()[j].getPassword()) == 0) {
+                            System.out.println("Access Granted\n");
+                            System.out.println("Welcome " + branch.getBranchEmployees()[j].getName());
+                            branch.getBranchEmployees()[j].menu();
+                            permisson = true;
+                            break;
+                        }
+                    }
+                }
+            }
 
         }
     }
 
+    public void custemerLogin(){
+        boolean permisson = false;
+        Scanner input = new Scanner(System.in);
+        System.out.println("You are in Custormer Page");
+
+        while (!permisson){
+            System.out.println("Enter your ID");
+            String personID = input.next();
+            System.out.println("Enter your password");
+            String personPassword  = input.next();
+
+            for(int j = 0; j < branchNumber; j++){
+                if(branches[j] == null ) continue;
+
+                for (int i = 0; i < branches[j].getNumberOfCustomer(); i++){
+                    System.out.println(branches[j].getCustomers()[i].getId() + "------" + branches[j].getCustomers()[i].getPassword());
+                    if(personID.equals(branches[j].getCustomers()[i].getId())  && personPassword.equals(branches[j].getCustomers()[i].getPassword() )){
+                        System.out.println("Access Granted\n");
+                        System.out.println("Welcome " + branches[j].getCustomers()[i].getName());
+
+                        Scanner input4 = new Scanner(System.in);
+                        boolean exit = false;
+                        int permission1;
+                        while (!exit) {
+                            System.out.println("Customer Menu");
+                            System.out.println("(1)Show the product list");
+                            System.out.println("(2)Show Products branchs ");
+                            System.out.println("(3)make shopping");
+                            System.out.println("(4)show orders");
+                            System.out.println("(0)exit");
+                            try {
+                                permission1 = input4.nextInt();
+                            }
+                            catch (Exception e) {
+                                System.out.println("\nYour choice must be an integer value !");
+                                input4.nextLine();
+                                permission1 = -1;
+                            }
+
+                            switch (permission1) {
+                                case 1:
+                                    branches[0].showProductList();
+                                    break;
+                                case 2:
+//                                    branches[0].getCustomers()[0].ShowProductStockBranch();
+                                     break;
+                                case 3:
+                                    branches[0].getCustomers()[0].makeShoping(new OfficeDesk("newmodel","black", 3));
+                                    System.out.println("the product added");
+                                    System.out.println();
+                                    break;
+                                case 4:
+                                    branches[0].getCustomers()[0].ShowOrders();
+                                    System.out.println();
+                                    break;
+                                case 0:
+                                    exit = true;
+                                    break;
+                                default:
+                                    System.out.println("Please Try Again\n");
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
     public void Test()
     {
-
         administrators[0].addBranch(new Branch("FirstBranch"));
         administrators[0].addBranch(new Branch("SecondBranch"));
         administrators[0].addBranch(new Branch("ThirdBranch"));
         administrators[0].addBranch(new Branch("FourdBranch"));
         //administrators[0].addBranchEmployee(new BranchEmployee());
-        administrators[0].addBranchEmployee(0, new BranchEmployee("101","1stEmployeeName","1stEmployeeSurname","emp111", "emp111@xx.com", getBranches()[0]));
+        administrators[0].addBranchEmployee(0, new BranchEmployee("11","1stEmployeeName","1stEmployeeSurname","1", "emp111@xx.com", getBranches()[0]));
         administrators[0].addBranchEmployee(0, new BranchEmployee("102","2ndEmployeeName","2ndEmployeeSurname","emp112", "emp112@xx.com", getBranches()[0]));
         administrators[0].addBranchEmployee(0, new BranchEmployee("103","3rdEmployeeName","3rdEmployeeSurname","emp113", "emp113@xx.com", getBranches()[0]));
         branches[0].getBranchEmployees()[0].addProduct(new MeetingDesk("MDesk1","red", 3) );
         branches[0].getBranchEmployees()[0].addProduct(new MeetingTable("MTable1","purple", 3) );
         branches[0].getBranchEmployees()[0].removeProduct(1);
 
-        branches[0].getBranchEmployees()[0].addCustomer(new Customer("C111", "C1Name", "C1Surname", "C1Password", "xx"));
+        branches[0].getBranchEmployees()[0].addCustomer(new Customer("c1", "C1Name", "c1", "c1", "xx"));
         branches[0].getCustomers()[0].OnlineShoping(new OfficeChair("OChair1","red",1) );
         branches[0].getCustomers()[0].OnlineShoping(new OfficeChair("OChair2","red",1) );
 

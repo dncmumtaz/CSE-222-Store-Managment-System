@@ -12,6 +12,7 @@ public class Customer extends Person{
     String telephone;
     public Customer(String id, String name, String surname, String password, String email)
     {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -120,23 +121,43 @@ public class Customer extends Person{
         //todo update orderlist
         orders[orderNumber] = product.getModel().toString();
         orderNumber++;
-        //sube elemani stocku güncellemeli
+
+
     }
 
 
-    //Müşteri sisteme giriş yaptığında ürün arayabilir,
-// ürün listesini görebilir, bir ürünün hangi mağazada olduğunu görebilir,
-// adres ve telefon bilgilerini girerek online alışveriş yapabilir ve önceki siparişlerini görüntüleyebilir.
-    @Override
-    public void menu()
+    public void menuu(Company company)
     {
+        Scanner input4 = new Scanner(System.in);
+        boolean exit = false;
+        int permission;
+        while (!exit) {
+            System.out.println("Customer Menu");
+            System.out.println("(1)Show the product list");
+            System.out.println("(2)Products branchs ");
+            System.out.println("(3)make shopping");
+            System.out.println("(4)show orders");
+            System.out.println("(0)exit");
+            try {
+                permission = input4.nextInt();
+            } catch (Exception e) {
+                System.out.println("\nYour choice must be an integer value !");
+                input4.nextLine();
+                permission = -1;
+            }
 
+            switch (permission) {
+
+
+                case 0:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Please Try Again\n");
+            }
+
+        }
     }
+    @Override
+    public void menu(){}
 }
-/*
- *ürün listesini görebilir,
- *bir ürünün hangi mağazada olduğunu görebilir,
- *adres ve telefon bilgilerini girerek online alışveriş yapabilir ve
- *önceki siparişlerini görüntüleyebilir.
- *
- */
